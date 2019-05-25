@@ -1,0 +1,60 @@
+mesh
+gmsh/rectangle.mesh
+
+t0
+0
+tfinal
+20.
+dt
+0.0001
+
+rho
+2700*1000*1000
+lambda
+59*1000
+mu
+26*1000
+celerity
+50.
+
+iteration_saved
+10
+
+initial_condition
+rectangular 0 1
+# center x0 y0 r, rectangular y0 thn, no
+
+boundary_condition_left
+neumann
+boundary_condition_right
+neumann
+boundary_condition_up
+neumann
+boundary_condition_down
+neumann
+# dirichlet_h A c/tc, dirichlet_nh A w tm c/tc, neumann
+
+excitation_left
+no -2. 2. 10. 5. 2. c
+excitation_up
+no -2. 0. 10. 5. 2. tc
+# yes/no A w tm c/tc
+# A     : Amplitude ou constante
+# w     : pulsation du signal
+# tm    : temps pour lequel le signal est max
+#(on the left border)
+
+state_of_sensor1
+on -9 0
+# on/off x0 y0
+
+state_of_sensor2
+on 9 0
+# on/off x0 y0
+
+precision
+0.5
+# taille du capteur
+
+results
+Results/test
